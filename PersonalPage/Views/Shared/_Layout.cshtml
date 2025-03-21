@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Daniel's Personal Portfolio</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/PersonalPage.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="language-selector">
+        <select id="languageSelect" class="form-select">
+            <option value="en">English</option>
+            <option value="pt">Português</option>
+        </select>
+    </div>
+
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3 fixed-top">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Personal Portfolio</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="#about" data-translate="nav-about">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="#experience" data-translate="nav-experience">Experience</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="#education" data-translate="nav-education">Education</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="#skills" data-translate="nav-skills">Skills</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="#projects" data-translate="nav-projects">Projects</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; @DateTime.Now.Year - Daniel's Personal Portfolio
+        </div>
+    </footer>
+
+    <a href="https://wa.me/YOUR_PHONE_NUMBER" target="_blank" class="btn btn-success">
+        <i class="fab fa-whatsapp"></i> Contact me on WhatsApp
+    </a>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script>
+        // Translations
+        const translations = {
+            en: {
+                'nav-about': 'About',
+                'nav-experience': 'Experience',
+                'nav-education': 'Education',
+                'nav-skills': 'Skills',
+                'nav-projects': 'Projects',
+                'section-experience': 'Work Experience',
+                'section-education': 'Education',
+                'section-skills': 'Skills',
+                'section-projects': 'Projects',
+                'section-languages': 'Languages',
+                'section-certifications': 'Certifications',
+                'responsibilities': 'Responsibilities',
+                'achievements': 'Key Achievements',
+                'view-code': 'Code',
+                'view-demo': 'Live Demo'
+            },
+            pt: {
+                'nav-about': 'Sobre',
+                'nav-experience': 'Experiência',
+                'nav-education': 'Educação',
+                'nav-skills': 'Habilidades',
+                'nav-projects': 'Projetos',
+                'section-experience': 'Experiência Profissional',
+                'section-education': 'Educação',
+                'section-skills': 'Habilidades',
+                'section-projects': 'Projetos',
+                'section-languages': 'Idiomas',
+                'section-certifications': 'Certificações',
+                'responsibilities': 'Responsabilidades',
+                'achievements': 'Principais Conquistas',
+                'view-code': 'Código',
+                'view-demo': 'Demonstração'
+            }
+        };
+
+        // Function to update the language
+        function updateLanguage(lang) {
+            document.querySelectorAll('[data-translate]').forEach(element => {
+                const key = element.getAttribute('data-translate');
+                if (translations[lang] && translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+            localStorage.setItem('preferred-language', lang);
+        }
+
+        // Language selector event listener
+        document.getElementById('languageSelect').addEventListener('change', (e) => {
+            updateLanguage(e.target.value);
+        });
+
+        // Set initial language
+        const savedLanguage = localStorage.getItem('preferred-language') || 'en';
+        document.getElementById('languageSelect').value = savedLanguage;
+        updateLanguage(savedLanguage);
+    </script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

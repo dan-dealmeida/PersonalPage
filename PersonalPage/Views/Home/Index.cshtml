@@ -1,0 +1,182 @@
+﻿@model PersonalPage.Models.CVModel
+
+<div class="container mt-5 pt-5">
+    <!-- Hero Section -->
+    <section id="about" class="py-5">
+        <div class="row align-items-center">
+            <div class="col-md-4 text-center">
+                <img src="@Model.PersonalInfo.ProfilePicture" alt="@Model.PersonalInfo.FullName" class="rounded-circle img-fluid mb-3" style="max-width: 250px;">
+            </div>
+            <div class="col-md-8">
+                <h1 class="display-4">@Model.PersonalInfo.FullName</h1>
+                <h3 class="text-muted">@Model.PersonalInfo.Title</h3>
+                <p class="lead">@Model.PersonalInfo.Summary</p>
+                <div class="social-links">
+                    <a href="@Model.PersonalInfo.LinkedInUrl" target="_blank" class="me-3"><i class="fab fa-linkedin fa-2x"></i></a>
+                    <a href="@Model.PersonalInfo.GitHubUrl" target="_blank" class="me-3"><i class="fab fa-github fa-2x"></i></a>
+                    <a href="mailto:@Model.PersonalInfo.Email" class="me-3"><i class="fas fa-envelope fa-2x"></i></a>
+                    <a href="https://wa.me/5522998215522" target="_blank" class="whatsapp-button"><i class="fab fa-whatsapp fa-2x"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-5">
+        <h2 class="display-6 mb-4" data-translate="section-experience">Work Experience</h2>
+        @foreach (var experience in Model.WorkExperience)
+        {
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h4>@experience.Position</h4>
+                    <h5 class="text-muted">@experience.Company</h5>
+                    <p class="mb-2">@experience.StartDate - @experience.EndDate | @experience.Location</p>
+                    <h6 data-translate="responsibilities">Responsibilities:</h6>
+                    <ul>
+                        @foreach (var responsibility in experience.Responsibilities)
+                        {
+                            <li>@responsibility</li>
+                        }
+                    </ul>
+                    @* <h6 data-translate="achievements">Key Achievements:</h6> *@
+                    @* <ul>
+                        @foreach (var achievement in experience.Achievements)
+                        {
+                            <li>@achievement</li>
+                        }
+                    </ul> *@
+                </div>
+            </div>
+        }
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="py-5">
+        <h2 class="display-6 mb-4" data-translate="section-education">Education</h2>
+        @foreach (var education in Model.Education)
+        {
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h4>@education.Degree in @education.Field</h4>
+                    <h5 class="text-muted">@education.Institution</h5>
+                    <p>@education.StartDate - @education.EndDate | @education.Location</p>
+                    <p>@education.Description</p>
+                </div>
+            </div>
+        }
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-5">
+        <h2 class="display-6 mb-4" data-translate="section-skills">Skills</h2>
+        <div class="row">
+            @foreach (var skillGroup in Model.Skills)
+            {
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h4 class="card-title">@skillGroup.Category</h4>
+                            <div class="d-flex flex-wrap gap-2">
+                                @foreach (var skill in skillGroup.Items)
+                                {
+                                    <span class="badge bg-primary">@skill</span>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-5">
+        <h2 class="display-6 mb-4" data-translate="section-projects">Personal Projects</h2>
+        <div class="row">
+            @foreach (var project in Model.Projects)
+            {
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100">
+                        @if (!string.IsNullOrEmpty(project.ImageUrl))
+                        {
+                            <img src="@project.ImageUrl" class="card-img-top" alt="@project.Name">
+                        }
+                        <div class="card-body">
+                            <h4 class="card-title">@project.Name</h4>
+                            <p class="card-text">@project.Description</p>
+                            <div class="mb-3">
+                                @foreach (var tech in project.Technologies)
+                                {
+                                    <span class="badge bg-secondary me-1">@tech</span>
+                                }
+                            </div>
+                            <div class="d-flex gap-2">
+                                @if (!string.IsNullOrEmpty(project.GitHubUrl))
+                                {
+                                    <a href="@project.GitHubUrl" target="_blank" class="btn btn-outline-dark">
+                                        <i class="fab fa-github"></i> <span data-translate="view-code">Code</span>
+                                    </a>
+                                }
+                                @if (!string.IsNullOrEmpty(project.LiveUrl))
+                                {
+                                    <a href="@project.LiveUrl" target="_blank" class="btn btn-primary">
+                                        <i class="fas fa-external-link-alt"></i> <span data-translate="view-demo">Live Demo</span>
+                                    </a>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </section>
+
+    <!-- Additional Sections -->
+    <section class="py-5">
+        <div class="row">
+            <!-- Languages -->
+            <div class="col-md-6 mb-4">
+                <h2 class="display-6 mb-4" data-translate="section-languages">Languages</h2>
+                <div class="card">
+                    <div class="card-body">
+                        <ul class="list-unstyled mb-0">
+                            @foreach (var language in Model.Languages)
+                            {
+                                <li class="mb-2"><i class="fas fa-language me-2"></i>@language</li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Certifications -->
+            @* <div class="col-md-6 mb-4">
+                <h2 class="display-6 mb-4" data-translate="section-certifications">Certifications</h2>
+                <div class="card">
+                    <div class="card-body">
+                        <ul class="list-unstyled mb-0">
+                            @foreach (var certification in Model.Certifications)
+                            {
+                                <li class="mb-2"><i class="fas fa-certificate me-2"></i>@certification</li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div> *@
+        </div>
+    </section>
+</div>
+
+@section Scripts {
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+}

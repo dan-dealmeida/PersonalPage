@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="PersonalInfo" xml:space="preserve">
+    <value>Informações Pessoais</value>
+  </data>
+  <data name="Projects" xml:space="preserve">
+    <value>Projetos</value>
+  </data>
+  <data name="ContactMe" xml:space="preserve">
+    <value>Vamos conversar no WhatsApp</value>
+  </data>
+  <!-- Add more translations -->
+</root> 
