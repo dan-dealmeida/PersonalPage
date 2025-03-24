@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PersonalPage")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6dfbfac9c987c4299bac78d63d64043e1baf218a")]
 [assembly: System.Reflection.AssemblyProductAttribute("PersonalPage")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PersonalPage")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
