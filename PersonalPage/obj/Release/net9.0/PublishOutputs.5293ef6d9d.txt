@@ -1,0 +1,9 @@
+C:\Projects\PersonalPage\PersonalPage\bin\Release\net9.0\publish\PersonalPage.exe
+C:\Projects\PersonalPage\PersonalPage\bin\Release\net9.0\publish\appsettings.Development.json
+C:\Projects\PersonalPage\PersonalPage\bin\Release\net9.0\publish\appsettings.json
+C:\Projects\PersonalPage\PersonalPage\bin\Release\net9.0\publish\PersonalPage.dll
+C:\Projects\PersonalPage\PersonalPage\bin\Release\net9.0\publish\PersonalPage.deps.json
+C:\Projects\PersonalPage\PersonalPage\bin\Release\net9.0\publish\PersonalPage.runtimeconfig.json
+C:\Projects\PersonalPage\PersonalPage\bin\Release\net9.0\publish\PersonalPage.pdb
+C:\Projects\PersonalPage\PersonalPage\bin\Release\net9.0\publish\en\PersonalPage.resources.dll
+C:\Projects\PersonalPage\PersonalPage\bin\Release\net9.0\publish\pt\PersonalPage.resources.dll
